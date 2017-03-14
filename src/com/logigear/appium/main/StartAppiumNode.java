@@ -90,6 +90,8 @@ public class StartAppiumNode extends javax.swing.JFrame {
         mDeviceModel.setBootstrapPort(txtBootstrapPort);
         mDeviceModel.setChboxAutoAppiumPort(chbxAutoAppiumPort);
         mDeviceModel.setChBoxAutoBootstrapPort(chbxAutoBootstrapPort);
+        mDeviceModel.setTxtChromeDriverPort(txtChromeDriverPort);
+        mDeviceModel.setChBoxAutoChromeDriverPort(chbxAutoChromeDriverPort);
     }
 
     /**
@@ -113,6 +115,9 @@ public class StartAppiumNode extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         txtBootstrapPort = new javax.swing.JTextField();
         chbxAutoBootstrapPort = new javax.swing.JCheckBox();
+        jLabel11 = new javax.swing.JLabel();
+        txtChromeDriverPort = new javax.swing.JTextField();
+        chbxAutoChromeDriverPort = new javax.swing.JCheckBox();
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         txtDeviceName = new javax.swing.JTextField();
@@ -199,6 +204,13 @@ public class StartAppiumNode extends javax.swing.JFrame {
         chbxAutoBootstrapPort.setSelected(true);
         chbxAutoBootstrapPort.setText("Auto-Increase");
 
+        jLabel11.setText("ChromeDirver port:");
+
+        txtChromeDriverPort.setText("9515");
+
+        chbxAutoChromeDriverPort.setSelected(true);
+        chbxAutoChromeDriverPort.setText("Auto-Increase");
+
         javax.swing.GroupLayout androidPanelLayout = new javax.swing.GroupLayout(androidPanel);
         androidPanel.setLayout(androidPanelLayout);
         androidPanelLayout.setHorizontalGroup(
@@ -215,7 +227,13 @@ public class StartAppiumNode extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtBootstrapPort)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(chbxAutoBootstrapPort))))
+                        .addComponent(chbxAutoBootstrapPort))
+                    .addGroup(androidPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtChromeDriverPort)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(chbxAutoChromeDriverPort))))
         );
         androidPanelLayout.setVerticalGroup(
             androidPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -227,7 +245,13 @@ public class StartAppiumNode extends javax.swing.JFrame {
                 .addGroup(androidPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(txtBootstrapPort, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(chbxAutoBootstrapPort)))
+                    .addComponent(chbxAutoBootstrapPort))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(androidPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(txtChromeDriverPort, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chbxAutoChromeDriverPort))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Device Infomation"));
@@ -385,7 +409,7 @@ public class StartAppiumNode extends javax.swing.JFrame {
                 .addComponent(iosPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(androidPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         btnRun.setText("Run");
@@ -561,10 +585,12 @@ public class StartAppiumNode extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbxPlatform;
     private javax.swing.JCheckBox chbxAutoAppiumPort;
     private javax.swing.JCheckBox chbxAutoBootstrapPort;
+    private javax.swing.JCheckBox chbxAutoChromeDriverPort;
     private javax.swing.JCheckBox chbxConnectToGrid;
     private javax.swing.JPanel iosPanel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -588,6 +614,7 @@ public class StartAppiumNode extends javax.swing.JFrame {
     private javax.swing.JTextField txtAppiumPort;
     private javax.swing.JTextField txtBootstrapPort;
     private javax.swing.JTextField txtChromeDriverFullPath;
+    private javax.swing.JTextField txtChromeDriverPort;
     private javax.swing.JTextField txtDeviceName;
     private javax.swing.JTextField txtPlatformVersion;
     private javax.swing.JTextField txtUDID;

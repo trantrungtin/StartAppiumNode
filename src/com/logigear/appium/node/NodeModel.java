@@ -20,7 +20,8 @@ public class NodeModel {
             String strAppiumGridServer,
             String strWebkitProxyPort,
             boolean bNeedGrid,
-            String strBootstrapPort) 
+            String strBootstrapPort,
+            String strChromeDriverPort) 
     {
         this.mPlatform = strPlatform;
         this.mDeviceName = strDeviceName;
@@ -33,6 +34,7 @@ public class NodeModel {
         this.mWebKitProxyPort = strWebkitProxyPort;
         this.mNeedGrid = bNeedGrid;
         this.mBootstrapPort = strBootstrapPort;
+        this.mChromeDriverPort = strChromeDriverPort;
     }   
     
 
@@ -103,6 +105,10 @@ public class NodeModel {
         return mBootstrapPort;
     }
     
+    public String getChromDriverPort() {
+        return mChromeDriverPort;
+    }
+    
     public boolean iOS() {
         return mPlatform.equalsIgnoreCase("ios");
     }
@@ -122,5 +128,6 @@ public class NodeModel {
     private String mWebKitProxyPort;
     private boolean mNeedGrid;
     private String mBootstrapPort;
+    private String mChromeDriverPort;
     
 }

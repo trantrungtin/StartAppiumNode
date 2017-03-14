@@ -153,7 +153,7 @@
                   <Component id="iosPanel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="androidPanel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="30" max="32767" attributes="0"/>
+                  <EmptySpace pref="28" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -252,6 +252,13 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="chbxAutoBootstrapPort" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="txtChromeDriverPort" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="chbxAutoChromeDriverPort" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
               </Group>
@@ -269,6 +276,13 @@
                           <Component id="txtBootstrapPort" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="chbxAutoBootstrapPort" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtChromeDriverPort" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="chbxAutoChromeDriverPort" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -295,6 +309,22 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JCheckBox" name="chbxAutoBootstrapPort">
+              <Properties>
+                <Property name="selected" type="boolean" value="true"/>
+                <Property name="text" type="java.lang.String" value="Auto-Increase"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel11">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="ChromeDirver port:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtChromeDriverPort">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="9515"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="chbxAutoChromeDriverPort">
               <Properties>
                 <Property name="selected" type="boolean" value="true"/>
                 <Property name="text" type="java.lang.String" value="Auto-Increase"/>

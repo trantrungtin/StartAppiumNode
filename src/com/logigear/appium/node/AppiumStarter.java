@@ -54,6 +54,7 @@ public class AppiumStarter {
         if (model.android()) {
             command += " --chromedriver-executable " + model.getChromeDriverPath();
             command += " --bootstrap-port " + model.getBootstrapPort();
+            command += " --chromedriver-port " + model.getChromDriverPort();
         }
         else if (model.iOS()) {
             command += " --webkit-debug-proxy-port " + model.getWebKitProxyPort();

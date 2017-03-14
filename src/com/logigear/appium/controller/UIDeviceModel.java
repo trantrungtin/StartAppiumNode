@@ -37,6 +37,8 @@ public class UIDeviceModel {
     private JTextField txtBootstrapPort;
     private JCheckBox chbxAutoBootstrapPort;
     private JCheckBox chbxAutoAppiumPort;
+    private JTextField txtChromeDriverPort;
+    private JCheckBox chbxAutoChromeDriverPort;
 
     public UIDeviceModel() {
     }
@@ -93,6 +95,9 @@ public class UIDeviceModel {
         String bootstrapPort = properties.getProperty("bootstrapPort");
         txtBootstrapPort.setText(bootstrapPort);
         
+        String chromeDriverPort = properties.getProperty("chromeDriverPort");
+        txtChromeDriverPort.setText(chromeDriverPort);
+        
     }
     
     public Properties getProperties() {
@@ -109,6 +114,7 @@ public class UIDeviceModel {
         props.setProperty("needGrid", model.needGrid() ? "true" : "false");
         props.setProperty("webkitProxyPort", model.getWebKitProxyPort());
         props.setProperty("bootstrapPort", model.getBootstrapPort());
+        props.setProperty("chromeDriverPort", model.getChromDriverPort());
         return props;
     }
     
@@ -124,6 +130,7 @@ public class UIDeviceModel {
         final String strWebKitProxyPort = txtWebKitProxyPort.getText();
         final boolean bNeedGrid = chbxConnectToGrid.isSelected();
         final String strBootstrapPort = txtBootstrapPort.getText();
+        final String strChromeDriverPort = txtChromeDriverPort.getText();
         
         NodeModel model = new NodeModel(strPlatform, 
                 strDeviceName, 
@@ -135,7 +142,8 @@ public class UIDeviceModel {
                 strAppiumGridServer,
                 strWebKitProxyPort,
                 bNeedGrid,
-                strBootstrapPort
+                strBootstrapPort,
+                strChromeDriverPort
         );
         return model;
     }
@@ -155,6 +163,8 @@ public class UIDeviceModel {
         txtChromeDriverFullPath.setEnabled(true);
         txtBootstrapPort.setEnabled(true);
         chbxAutoBootstrapPort.setEnabled(true);
+        txtChromeDriverPort.setEnabled(true);
+        chbxAutoChromeDriverPort.setEnabled(true);
         androidPanel.setEnabled(true);
     }
     
@@ -162,6 +172,8 @@ public class UIDeviceModel {
         txtChromeDriverFullPath.setEnabled(false);
         txtBootstrapPort.setEnabled(false);
         chbxAutoBootstrapPort.setEnabled(false);
+        txtChromeDriverPort.setEnabled(false);
+        chbxAutoChromeDriverPort.setEnabled(false);
         androidPanel.setEnabled(false);
     }
     
@@ -240,6 +252,7 @@ public class UIDeviceModel {
         this.txtBootstrapPort = txtBootstrapPort;
     }
 
+    
     public void setChboxAutoAppiumPort(JCheckBox chbxAutoAppiumPort) {
         this.chbxAutoAppiumPort = chbxAutoAppiumPort;
     }
@@ -250,26 +263,34 @@ public class UIDeviceModel {
 
     public void increasePort() {
         if (chbxAutoAppiumPort.isSelected()) {
-            try {
-                String strAppiumPort = txtAppiumPort.getText();
-                int appiumPort = Integer.parseInt(strAppiumPort);
-                ++appiumPort;
-                strAppiumPort = "" + appiumPort;
-                txtAppiumPort.setText(strAppiumPort);
-            }
-            catch(Exception e) {}
-            
+            increasePort(txtAppiumPort);
         }
         
         if (chbxAutoBootstrapPort.isSelected()) {
-            try {
-                String strBootstrapPort = txtBootstrapPort.getText();
-                int bootstrapPort = Integer.parseInt(strBootstrapPort);
-                ++bootstrapPort;
-                strBootstrapPort = "" + bootstrapPort;
-                txtBootstrapPort.setText(strBootstrapPort);
-            }
-            catch(Exception e) {}
+            increasePort(txtBootstrapPort);
         }
+        
+        if (chbxAutoChromeDriverPort.isSelected()) {
+            increasePort(txtChromeDriverPort);
+        }
+    }
+    
+    private void increasePort(JTextField jTextField) {
+        try {
+            String sPort = jTextField.getText();
+            int iPort = Integer.parseInt(sPort);
+            ++iPort;
+            sPort = "" + iPort;
+            jTextField.setText(sPort);
+        }
+        catch(Exception e) {}
+    }
+
+    public void setTxtChromeDriverPort(JTextField txtChromeDriverPort) {
+        this.txtChromeDriverPort = txtChromeDriverPort;
+    }
+
+    public void setChBoxAutoChromeDriverPort(JCheckBox chbxAutoChromeDriverPort) {
+        this.chbxAutoChromeDriverPort = chbxAutoChromeDriverPort;
     }
 }

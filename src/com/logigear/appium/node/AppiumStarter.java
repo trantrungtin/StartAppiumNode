@@ -11,6 +11,8 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -59,7 +61,20 @@ public class AppiumStarter {
         else if (model.iOS()) {
             command += " --webkit-debug-proxy-port " + model.getWebKitProxyPort();
         }
+        
+        if (model.needLog()) {
+            command += " --log " + getAppiumLog(model);
+        }
+        
         return command;
+    }
+    
+    private String getAppiumLog(NodeModel model) {
+        String name = model.getDeviceName();
+        String simpleDate = new SimpleDateFormat("yyyyMMddHHmm'.log'").format(new Date());
+        String executionPath = System.getProperty("user.dir");
+        String appiumLog = executionPath + File.separator + name.replaceAll("\\s+", "") + simpleDate;
+        return appiumLog;
     }
     
     private ICommandRunner mRunner = null;

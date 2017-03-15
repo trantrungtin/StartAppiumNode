@@ -92,6 +92,7 @@ public class StartAppiumNode extends javax.swing.JFrame {
         mDeviceModel.setChBoxAutoBootstrapPort(chbxAutoBootstrapPort);
         mDeviceModel.setTxtChromeDriverPort(txtChromeDriverPort);
         mDeviceModel.setChBoxAutoChromeDriverPort(chbxAutoChromeDriverPort);
+        mDeviceModel.setChBoxNeedALog(chboxNeedALog);
     }
 
     /**
@@ -134,6 +135,7 @@ public class StartAppiumNode extends javax.swing.JFrame {
         txtAppiumGridServer = new javax.swing.JTextField();
         chbxConnectToGrid = new javax.swing.JCheckBox();
         chbxAutoAppiumPort = new javax.swing.JCheckBox();
+        chboxNeedALog = new javax.swing.JCheckBox();
         btnRun = new javax.swing.JButton();
         btnStartWebKitProxy = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -332,6 +334,9 @@ public class StartAppiumNode extends javax.swing.JFrame {
         chbxAutoAppiumPort.setSelected(true);
         chbxAutoAppiumPort.setText("Auto-Increase");
 
+        chboxNeedALog.setSelected(true);
+        chboxNeedALog.setText("Need a Log");
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -352,10 +357,13 @@ public class StartAppiumNode extends javax.swing.JFrame {
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtAppiumGridServer)
+                        .addComponent(txtAppiumGridServer, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(chbxConnectToGrid, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addComponent(chboxNeedALog)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -374,7 +382,9 @@ public class StartAppiumNode extends javax.swing.JFrame {
                     .addComponent(jLabel7)
                     .addComponent(txtAppiumGridServer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(chbxConnectToGrid))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(chboxNeedALog)
+                .addContainerGap(8, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -405,11 +415,11 @@ public class StartAppiumNode extends javax.swing.JFrame {
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(iosPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(iosPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(androidPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         btnRun.setText("Run");
@@ -583,6 +593,7 @@ public class StartAppiumNode extends javax.swing.JFrame {
     private javax.swing.JButton btnRun;
     private javax.swing.JButton btnStartWebKitProxy;
     private javax.swing.JComboBox<String> cbxPlatform;
+    private javax.swing.JCheckBox chboxNeedALog;
     private javax.swing.JCheckBox chbxAutoAppiumPort;
     private javax.swing.JCheckBox chbxAutoBootstrapPort;
     private javax.swing.JCheckBox chbxAutoChromeDriverPort;

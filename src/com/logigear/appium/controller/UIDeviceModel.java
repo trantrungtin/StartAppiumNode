@@ -39,6 +39,7 @@ public class UIDeviceModel {
     private JCheckBox chbxAutoAppiumPort;
     private JTextField txtChromeDriverPort;
     private JCheckBox chbxAutoChromeDriverPort;
+    private JCheckBox chbxNeedALog;
 
     public UIDeviceModel() {
     }
@@ -131,6 +132,7 @@ public class UIDeviceModel {
         final boolean bNeedGrid = chbxConnectToGrid.isSelected();
         final String strBootstrapPort = txtBootstrapPort.getText();
         final String strChromeDriverPort = txtChromeDriverPort.getText();
+        final boolean bNeedALog = chbxNeedALog.isSelected();
         
         NodeModel model = new NodeModel(strPlatform, 
                 strDeviceName, 
@@ -143,7 +145,8 @@ public class UIDeviceModel {
                 strWebKitProxyPort,
                 bNeedGrid,
                 strBootstrapPort,
-                strChromeDriverPort
+                strChromeDriverPort,
+                bNeedALog
         );
         return model;
     }
@@ -292,5 +295,9 @@ public class UIDeviceModel {
 
     public void setChBoxAutoChromeDriverPort(JCheckBox chbxAutoChromeDriverPort) {
         this.chbxAutoChromeDriverPort = chbxAutoChromeDriverPort;
+    }
+
+    public void setChBoxNeedALog(JCheckBox chboxNeedALog) {
+        this.chbxNeedALog = chboxNeedALog;
     }
 }

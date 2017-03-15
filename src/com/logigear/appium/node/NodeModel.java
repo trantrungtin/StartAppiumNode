@@ -21,7 +21,8 @@ public class NodeModel {
             String strWebkitProxyPort,
             boolean bNeedGrid,
             String strBootstrapPort,
-            String strChromeDriverPort) 
+            String strChromeDriverPort,
+            boolean bNeedALog) 
     {
         this.mPlatform = strPlatform;
         this.mDeviceName = strDeviceName;
@@ -35,6 +36,7 @@ public class NodeModel {
         this.mNeedGrid = bNeedGrid;
         this.mBootstrapPort = strBootstrapPort;
         this.mChromeDriverPort = strChromeDriverPort;
+        this.mNeedALog = bNeedALog;
     }   
     
 
@@ -101,6 +103,10 @@ public class NodeModel {
         return mNeedGrid;
     }
     
+    public boolean needLog() {
+        return mNeedALog;
+    }
+    
     public String getBootstrapPort() {
         return mBootstrapPort;
     }
@@ -129,5 +135,6 @@ public class NodeModel {
     private boolean mNeedGrid;
     private String mBootstrapPort;
     private String mChromeDriverPort;
+    private boolean mNeedALog;
     
 }

@@ -66,6 +66,11 @@ public class AppiumStarter {
             command += " --log " + getAppiumLog(model);
         }
         
+        final String otherFlags = model.getOtherFlags();
+        if (!otherFlags.isEmpty()) {
+            command += " " + otherFlags;
+        }
+        
         return command;
     }
     

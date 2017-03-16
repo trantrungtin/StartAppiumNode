@@ -94,6 +94,8 @@ public class StartAppiumNode extends javax.swing.JFrame {
         mDeviceModel.setTxtChromeDriverPort(txtChromeDriverPort);
         mDeviceModel.setChBoxAutoChromeDriverPort(chbxAutoChromeDriverPort);
         mDeviceModel.setChBoxNeedALog(chboxNeedALog);
+        mDeviceModel.setTxtOtherFlags(txtOtherFlags);
+        mDeviceModel.setChBoxOtherFlags(chbxOtherFlags);
     }
 
     /**
@@ -137,6 +139,8 @@ public class StartAppiumNode extends javax.swing.JFrame {
         chbxConnectToGrid = new javax.swing.JCheckBox();
         chbxAutoAppiumPort = new javax.swing.JCheckBox();
         chboxNeedALog = new javax.swing.JCheckBox();
+        chbxOtherFlags = new javax.swing.JCheckBox();
+        txtOtherFlags = new javax.swing.JTextField();
         btnRun = new javax.swing.JButton();
         btnStartWebKitProxy = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -338,33 +342,47 @@ public class StartAppiumNode extends javax.swing.JFrame {
         chboxNeedALog.setSelected(true);
         chboxNeedALog.setText("Need a Log");
 
+        chbxOtherFlags.setText("Other Flags:");
+        chbxOtherFlags.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chbxOtherFlagsActionPerformed(evt);
+            }
+        });
+
+        txtOtherFlags.setEnabled(false);
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtAppiumAddress))
+                        .addContainerGap()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addComponent(jLabel9)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtAppiumAddress))
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtAppiumPort)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(chbxAutoAppiumPort))
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtAppiumGridServer, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(chbxConnectToGrid, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtAppiumPort)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(chbxAutoAppiumPort))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtAppiumGridServer, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
+                        .addComponent(chboxNeedALog)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(chbxConnectToGrid, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(chbxOtherFlags)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtOtherFlags)))
                 .addContainerGap())
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addComponent(chboxNeedALog)
-                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -384,8 +402,11 @@ public class StartAppiumNode extends javax.swing.JFrame {
                     .addComponent(txtAppiumGridServer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(chbxConnectToGrid))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(chboxNeedALog)
-                .addContainerGap(8, Short.MAX_VALUE))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(chboxNeedALog)
+                    .addComponent(chbxOtherFlags)
+                    .addComponent(txtOtherFlags, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -420,7 +441,7 @@ public class StartAppiumNode extends javax.swing.JFrame {
                 .addComponent(iosPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(androidPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         btnRun.setText("Run");
@@ -539,6 +560,15 @@ public class StartAppiumNode extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_windowOpened
 
+    private void chbxOtherFlagsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chbxOtherFlagsActionPerformed
+        if (chbxOtherFlags.isSelected()) {
+            txtOtherFlags.setEnabled(true);
+        }
+        else {
+            txtOtherFlags.setEnabled(false);
+        }
+    }//GEN-LAST:event_chbxOtherFlagsActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -599,6 +629,7 @@ public class StartAppiumNode extends javax.swing.JFrame {
     private javax.swing.JCheckBox chbxAutoBootstrapPort;
     private javax.swing.JCheckBox chbxAutoChromeDriverPort;
     private javax.swing.JCheckBox chbxConnectToGrid;
+    private javax.swing.JCheckBox chbxOtherFlags;
     private javax.swing.JPanel iosPanel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -628,6 +659,7 @@ public class StartAppiumNode extends javax.swing.JFrame {
     private javax.swing.JTextField txtChromeDriverFullPath;
     private javax.swing.JTextField txtChromeDriverPort;
     private javax.swing.JTextField txtDeviceName;
+    private javax.swing.JTextField txtOtherFlags;
     private javax.swing.JTextField txtPlatformVersion;
     private javax.swing.JTextField txtUDID;
     private javax.swing.JTextField txtWebKitProxyPort;

@@ -41,6 +41,8 @@ public class UIDeviceModel {
     private JTextField txtChromeDriverPort;
     private JCheckBox chbxAutoChromeDriverPort;
     private JCheckBox chbxNeedALog;
+    private JTextField txtOtherFlags;
+    private JCheckBox chbxOtherFlags;
 
     public UIDeviceModel() {
     }
@@ -99,7 +101,19 @@ public class UIDeviceModel {
         
         String chromeDriverPort = properties.getProperty("chromeDriverPort");
         txtChromeDriverPort.setText(chromeDriverPort);
+     
+        String otherFlags = properties.getProperty("otherFlags");
+        txtOtherFlags.setText(otherFlags);
         
+        String usedOtherFlags = properties.getProperty("usedOtherFlags");
+        if (usedOtherFlags.equalsIgnoreCase("true")) {
+            chbxOtherFlags.setSelected(true);
+            txtOtherFlags.setEnabled(true);
+        }
+        else {
+            chbxOtherFlags.setSelected(false);
+            txtOtherFlags.setEnabled(false);
+        }
     }
     
     public Properties getProperties() {
@@ -117,6 +131,8 @@ public class UIDeviceModel {
         props.setProperty("webkitProxyPort", model.getWebKitProxyPort());
         props.setProperty("bootstrapPort", model.getBootstrapPort());
         props.setProperty("chromeDriverPort", model.getChromDriverPort());
+        props.setProperty("otherFlags", txtOtherFlags.getText().trim());
+        props.setProperty("usedOtherFlags", chbxOtherFlags.isSelected() ? "true" : "false");
         return props;
     }
     
@@ -134,6 +150,11 @@ public class UIDeviceModel {
         final String strBootstrapPort = txtBootstrapPort.getText();
         final String strChromeDriverPort = txtChromeDriverPort.getText();
         final boolean bNeedALog = chbxNeedALog.isSelected();
+        String strOtherFlags = "";
+        
+        if (txtOtherFlags.isEnabled()) {
+            strOtherFlags = txtOtherFlags.getText();
+        }
         
         NodeModel model = new NodeModel(strPlatform, 
                 strDeviceName, 
@@ -147,7 +168,8 @@ public class UIDeviceModel {
                 bNeedGrid,
                 strBootstrapPort,
                 strChromeDriverPort,
-                bNeedALog
+                bNeedALog,
+                strOtherFlags
         );
         return model;
     }
@@ -300,5 +322,13 @@ public class UIDeviceModel {
 
     public void setChBoxNeedALog(JCheckBox chboxNeedALog) {
         this.chbxNeedALog = chboxNeedALog;
+    }
+
+    public void setTxtOtherFlags(JTextField txtOtherFlags) {
+        this.txtOtherFlags = txtOtherFlags;
+    }
+
+    public void setChBoxOtherFlags(JCheckBox chbxOtherFlags) {
+        this.chbxOtherFlags = chbxOtherFlags;
     }
 }

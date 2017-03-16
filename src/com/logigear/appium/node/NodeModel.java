@@ -5,6 +5,8 @@
  */
 package com.logigear.appium.node;
 
+import com.logigear.appium.APPCONST;
+
 /**
  *
  * @author tin.tran
@@ -22,7 +24,8 @@ public class NodeModel {
             boolean bNeedGrid,
             String strBootstrapPort,
             String strChromeDriverPort,
-            boolean bNeedALog) 
+            boolean bNeedALog,
+            String strOtherFlags) 
     {
         this.mPlatform = strPlatform;
         this.mDeviceName = strDeviceName;
@@ -37,6 +40,7 @@ public class NodeModel {
         this.mBootstrapPort = strBootstrapPort;
         this.mChromeDriverPort = strChromeDriverPort;
         this.mNeedALog = bNeedALog;
+        this.mOtherFlags = strOtherFlags;
     }   
     
 
@@ -115,12 +119,16 @@ public class NodeModel {
         return mChromeDriverPort;
     }
     
+    public String getOtherFlags() {
+        return mOtherFlags;
+    }
+    
     public boolean iOS() {
-        return mPlatform.equalsIgnoreCase("ios");
+        return mPlatform.equalsIgnoreCase(APPCONST.IOS);
     }
     
     public boolean android() {
-        return mPlatform.equalsIgnoreCase("android");
+        return mPlatform.equalsIgnoreCase(APPCONST.ANDROID);
     }
     
     private String mPlatform;
@@ -136,5 +144,5 @@ public class NodeModel {
     private String mBootstrapPort;
     private String mChromeDriverPort;
     private boolean mNeedALog;
-    
+    private String mOtherFlags;
 }

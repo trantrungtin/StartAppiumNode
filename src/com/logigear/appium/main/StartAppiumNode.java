@@ -5,6 +5,7 @@
  */
 package com.logigear.appium.main;
 
+import com.logigear.appium.APPCONST;
 import com.logigear.appium.controller.UIDeviceModel;
 import com.logigear.appium.controller.NodeController;
 import com.logigear.appium.node.NodeModel;
@@ -509,7 +510,7 @@ public class StartAppiumNode extends javax.swing.JFrame {
 
     private void cbxPlatformActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxPlatformActionPerformed
         String platform = (String) this.cbxPlatform.getSelectedItem();
-        if (platform.equalsIgnoreCase("android")) {
+        if (platform.equalsIgnoreCase(APPCONST.ANDROID)) {
             mDeviceModel.selectAndroid();
         }
         else {

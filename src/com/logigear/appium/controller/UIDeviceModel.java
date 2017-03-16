@@ -5,6 +5,7 @@
  */
 package com.logigear.appium.controller;
 
+import com.logigear.appium.APPCONST;
 import com.logigear.appium.node.NodeModel;
 import com.logigear.enviroment.Enviroment;
 import java.io.OutputStream;
@@ -162,7 +163,7 @@ public class UIDeviceModel {
     }
     
     private void enableAndroid() {
-        cbxPlatform.setSelectedItem("Android");
+        cbxPlatform.setSelectedItem(APPCONST.ANDROID);
         txtChromeDriverFullPath.setEnabled(true);
         txtBootstrapPort.setEnabled(true);
         chbxAutoBootstrapPort.setEnabled(true);
@@ -181,7 +182,7 @@ public class UIDeviceModel {
     }
     
     private void enableIOS() {
-        cbxPlatform.setSelectedItem("iOS");
+        cbxPlatform.setSelectedItem(APPCONST.IOS);
         txtWebKitProxyPort.setEnabled(true);
         btnStartWebKitProxy.setEnabled(true);
         iosPanel.setEnabled(true);

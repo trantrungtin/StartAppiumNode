@@ -6,6 +6,7 @@
 package com.logigear.appium.controller;
 
 import com.logigear.appium.APPCONST;
+import com.logigear.appium.controller.validation.FileExistVerifier;
 import com.logigear.appium.node.NodeModel;
 import com.logigear.enviroment.Enviroment;
 import java.io.OutputStream;
@@ -13,6 +14,7 @@ import java.util.Properties;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -43,6 +45,7 @@ public class UIDeviceModel {
     private JCheckBox chbxNeedALog;
     private JTextField txtOtherFlags;
     private JCheckBox chbxOtherFlags;
+    private JLabel jLabelWarning;
 
     public UIDeviceModel() {
     }
@@ -256,6 +259,7 @@ public class UIDeviceModel {
 
     public void setTxtChromeDriverFullPath(JTextField txtChromeDriverFullPath) {
         this.txtChromeDriverFullPath = txtChromeDriverFullPath;
+        this.txtChromeDriverFullPath.setInputVerifier(new FileExistVerifier(jLabelWarning, "Chrome Driver is not exist."));
     }
 
     public void setBtnRun(JButton btnRun) {
@@ -330,5 +334,10 @@ public class UIDeviceModel {
 
     public void setChBoxOtherFlags(JCheckBox chbxOtherFlags) {
         this.chbxOtherFlags = chbxOtherFlags;
+    }
+
+    public void setLabelWarning(JLabel jLabelWarning) {
+        this.jLabelWarning = jLabelWarning;
+        this.jLabelWarning.setText("");
     }
 }

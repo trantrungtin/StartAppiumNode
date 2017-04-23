@@ -10,6 +10,7 @@ import com.logigear.appium.controller.UIDeviceModel;
 import com.logigear.appium.controller.NodeController;
 import com.logigear.appium.node.NodeModel;
 import com.logigear.enviroment.Enviroment;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -22,6 +23,7 @@ import java.util.Properties;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JTextField;
 import javax.swing.KeyStroke;
 import javax.swing.text.DefaultEditorKit;
@@ -74,6 +76,7 @@ public class StartAppiumNode extends javax.swing.JFrame {
     }
     
     private void initDeviceModel() {
+        mDeviceModel.setLabelWarning(jLabelWarning);
         mDeviceModel.setCbxPlatform(cbxPlatform);
         mDeviceModel.setTxtDeviceName(txtDeviceName);
         mDeviceModel.setTxtUDID(txtUDID);
@@ -122,6 +125,7 @@ public class StartAppiumNode extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         txtChromeDriverPort = new javax.swing.JTextField();
         chbxAutoChromeDriverPort = new javax.swing.JCheckBox();
+        btnBrowse = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         txtDeviceName = new javax.swing.JTextField();
@@ -141,6 +145,7 @@ public class StartAppiumNode extends javax.swing.JFrame {
         chboxNeedALog = new javax.swing.JCheckBox();
         chbxOtherFlags = new javax.swing.JCheckBox();
         txtOtherFlags = new javax.swing.JTextField();
+        jLabelWarning = new javax.swing.JLabel();
         btnRun = new javax.swing.JButton();
         btnStartWebKitProxy = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -218,6 +223,13 @@ public class StartAppiumNode extends javax.swing.JFrame {
         chbxAutoChromeDriverPort.setSelected(true);
         chbxAutoChromeDriverPort.setText("Auto-Increase");
 
+        btnBrowse.setText("Browse");
+        btnBrowse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBrowseActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout androidPanelLayout = new javax.swing.GroupLayout(androidPanel);
         androidPanel.setLayout(androidPanelLayout);
         androidPanelLayout.setHorizontalGroup(
@@ -228,7 +240,9 @@ public class StartAppiumNode extends javax.swing.JFrame {
                     .addGroup(androidPanelLayout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtChromeDriverFullPath, javax.swing.GroupLayout.DEFAULT_SIZE, 345, Short.MAX_VALUE))
+                        .addComponent(txtChromeDriverFullPath)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnBrowse))
                     .addGroup(androidPanelLayout.createSequentialGroup()
                         .addComponent(jLabel10)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -238,7 +252,7 @@ public class StartAppiumNode extends javax.swing.JFrame {
                     .addGroup(androidPanelLayout.createSequentialGroup()
                         .addComponent(jLabel11)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtChromeDriverPort)
+                        .addComponent(txtChromeDriverPort, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(chbxAutoChromeDriverPort))))
         );
@@ -247,7 +261,8 @@ public class StartAppiumNode extends javax.swing.JFrame {
             .addGroup(androidPanelLayout.createSequentialGroup()
                 .addGroup(androidPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtChromeDriverFullPath, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
+                    .addComponent(jLabel6)
+                    .addComponent(btnBrowse))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(androidPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
@@ -409,6 +424,9 @@ public class StartAppiumNode extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jLabelWarning.setForeground(java.awt.Color.red);
+        jLabelWarning.setText("jLabelWarning");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -423,7 +441,10 @@ public class StartAppiumNode extends javax.swing.JFrame {
                         .addComponent(cbxPlatform, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(iosPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(iosPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabelWarning)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -441,8 +462,12 @@ public class StartAppiumNode extends javax.swing.JFrame {
                 .addComponent(iosPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(androidPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelWarning)
+                .addContainerGap(12, Short.MAX_VALUE))
         );
+
+        jLabelWarning.getAccessibleContext().setAccessibleName("jLabelWarning");
 
         btnRun.setText("Run");
         btnRun.addActionListener(new java.awt.event.ActionListener() {
@@ -569,6 +594,20 @@ public class StartAppiumNode extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_chbxOtherFlagsActionPerformed
 
+    private void btnBrowseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBrowseActionPerformed
+        JFileChooser fileChooser = new JFileChooser(); 
+        fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY); 
+        fileChooser.setAcceptAllFileFilterUsed(false);
+ 
+        int rVal = fileChooser.showOpenDialog(null);
+        if (rVal == JFileChooser.APPROVE_OPTION) {            
+            txtChromeDriverFullPath.requestFocus();
+            txtChromeDriverFullPath.setBackground(Color.WHITE);
+            txtChromeDriverFullPath.setToolTipText(null);
+            txtChromeDriverFullPath.setText(fileChooser.getSelectedFile().toString());
+        }
+    }//GEN-LAST:event_btnBrowseActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -621,6 +660,7 @@ public class StartAppiumNode extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel androidPanel;
+    private javax.swing.JButton btnBrowse;
     private javax.swing.JButton btnRun;
     private javax.swing.JButton btnStartWebKitProxy;
     private javax.swing.JComboBox<String> cbxPlatform;
@@ -642,6 +682,7 @@ public class StartAppiumNode extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabelWarning;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
